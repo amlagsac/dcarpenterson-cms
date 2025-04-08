@@ -3,8 +3,8 @@ import LoadingIcon from "../icons/LoadingIcon";
 type ButtonProps = React.PropsWithChildren<
   React.ButtonHTMLAttributes<HTMLButtonElement>
 > & {
-  variant: "primary" | "secondary" | "tertiary";
-  size: "small" | "medium" | "large";
+  variant?: "primary" | "secondary" | "tertiary";
+  size?: "small" | "medium" | "large";
   loading?: boolean;
 };
 
@@ -21,7 +21,14 @@ const sizeMap = {
 };
 
 export default function Button(props: ButtonProps) {
-  const { variant, size, loading, className, children, ...rest } = props;
+  const {
+    variant = "primary",
+    size = "medium",
+    loading,
+    className,
+    children,
+    ...rest
+  } = props;
 
   return (
     <button

@@ -1,10 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { LogOut, User } from "lucide-react";
-import { handleLogout } from "@/lib/actions/logout";
+import { signOut, useSession } from "next-auth/react";
+import { LogOut } from "lucide-react";
+import Image from "next/image";
 
 export default function UserDropdown() {
+  const { data: session } = useSession();
+  const user = session?.user;
+  console.log(session);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -23,18 +27,24 @@ export default function UserDropdown() {
   }, []);
 
   const handleSignOut = () => {
-    handleLogout();
+    signOut();
   };
 
-  // if (!user) return null
+  if (!user) return null;
 
   return (
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200"
+        className="overflow-hidden rounded-full w-10 h-10 border border-gray-300"
       >
-        <User className="w-5 h-5 text-gray-700" />
+        <Image
+          src={user.image || "/placeholder-user.jpg"}
+          alt="User Avatar"
+          width={40}
+          height={40}
+          className="rounded-full"
+        />
       </button>
 
       {isOpen && (
