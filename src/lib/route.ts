@@ -4,3 +4,4 @@ export const loginUrl = "/login";
 
 // Authenticated routes
 export const dashboardUrl = "/dashboard";
+export const usersUrl = "/users";
