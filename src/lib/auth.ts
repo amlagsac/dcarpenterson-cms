@@ -1,4 +1,4 @@
-import NextAuth from "next-auth";
+import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { prisma } from "./db";
 import { User } from "./types/user";
@@ -23,14 +23,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           where: { email, deletedAt: null },
         });
 
-        if (!user) throw new Error("Invalid email or password.");
+        if (!user) throw new CredentialsSignin("Invalid credentials.");
 
         const isPasswordValid: boolean = await verifyPassword(
           password,
           user.password,
         );
 
-        if (!isPasswordValid) throw new Error("Invalid email or password.");
+        if (!isPasswordValid)
+          throw new CredentialsSignin("Invalid credentials.");
 
         return {
           id: String(user?.id),
