@@ -29,7 +29,7 @@ export default function Login() {
       if (response?.error) {
         setError("Invalid credentials.");
       } else {
-        router.push("/dashbboard");
+        router.push("/dashboard");
       }
     } catch (error) {
       console.error("Error during login:", error);
@@ -56,11 +56,6 @@ export default function Login() {
             alt="Logo of DCS"
           />
         </div>
-        {error && (
-          <p className="text-sm text-red-600 text-center font-medium">
-            {error}
-          </p>
-        )}
         <div className="flex flex-col">
           <Label
             htmlFor="email"
@@ -105,6 +100,11 @@ export default function Login() {
             />
             Show Password
           </Label>
+          {error && (
+            <p className="text-sm text-red-600 text-center font-medium">
+              {error}
+            </p>
+          )}
         </div>
         <Button
           variant="primary"

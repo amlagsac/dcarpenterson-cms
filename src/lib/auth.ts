@@ -12,8 +12,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         password: {},
       },
       authorize: async (credentials) => {
-        const email = credentials?.email;
-        const password = credentials?.password;
+        const { email, password } = credentials;
 
         if (typeof email !== "string" || typeof password !== "string") {
           throw new Error("Invalid input.");

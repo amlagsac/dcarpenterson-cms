@@ -5,15 +5,11 @@ import { signIn } from "../auth";
 
 export async function handleLogin(formData: FormData) {
   try {
-    const response = await signIn("credentials", {
+    await signIn("credentials", {
       redirect: false,
       email: formData.get("email"),
       password: formData.get("password"),
     });
-
-    if (!response.ok) {
-      return { error: "Invalid credentials." };
-    }
 
     return { success: true };
   } catch (err) {
