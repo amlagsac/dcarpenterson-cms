@@ -5,6 +5,7 @@ export type User = {
   email: string;
   password: string;
   roleId: number;
+  image: string;
   createdAt: Date;
   updatedAt: Date;
   deletedAt?: Date | null;

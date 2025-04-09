@@ -1,7 +1,15 @@
 import Divider from "@/components/common/Divider";
 import NavItem from "@/components/nav/NavItem";
 import { dashboardUrl, usersUrl } from "@/lib/route";
-import { House, Landmark, Mail, Package, Settings, User2 } from "lucide-react";
+import {
+  House,
+  Landmark,
+  Mail,
+  Package,
+  Settings,
+  User2,
+  Wrench,
+} from "lucide-react";
 import Image from "next/image";
 
 export default function DesktopSidebar() {
@@ -23,6 +31,9 @@ export default function DesktopSidebar() {
         </NavItem>
         <NavItem href={"#"} label="Products">
           <Package />
+        </NavItem>
+        <NavItem href={"#"} label="Services">
+          <Wrench />
         </NavItem>
         <NavItem href={"#"} label="Inquiries">
           <Mail />
