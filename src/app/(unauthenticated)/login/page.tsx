@@ -43,7 +43,7 @@ export default function Login() {
   return (
     <Box
       dropShadow="2xl"
-      className="w-full max-w-md p-8 border rounded-4xl bg-[#F9FAFB]"
+      className="w-full max-w-md p-8 rounded-4xl bg-[#F9FAFB]"
     >
       <form
         onSubmit={handleSubmitLoginForm}

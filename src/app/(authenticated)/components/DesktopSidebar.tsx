@@ -15,8 +15,14 @@ import Image from "next/image";
 export default function DesktopSidebar() {
   return (
     <aside className="fixed inset-y-0 left-0 z-10 hidden w-auto bg-white border-r border-r-gray-200 sm:flex flex-col">
-      <nav className="flex flex-col justify-center items-center gap-2 px-2 py-4">
-        <Image src={"/DCS_Logo.png"} alt="Logo" width={100} height={100} />
+      <nav className="flex flex-col justify-center items-center gap-2.5 py-4">
+        <Image
+          src={"/DCS_Logo.png"}
+          alt="Logo"
+          width={100}
+          height={100}
+          className="border"
+        />
         <Divider className="w-full border-t border-gray-200" />
       </nav>
       <nav className="flex flex-col items-center justify-center gap-2 px-2">
