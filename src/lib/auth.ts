@@ -1,8 +1,9 @@
 import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { prisma } from "./db";
-import { User } from "./types/user";
 import { verifyPassword } from "./utils";
+import { loginUrl } from "./route";
+import { User } from "@prisma/client";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
@@ -43,7 +44,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     }),
   ],
   pages: {
-    signIn: "/login",
+    signIn: loginUrl,
   },
   session: {
     strategy: "jwt",

@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Label from "@/components/input/Label";
 import Checkbox from "@/components/input/Checkbox";
+import { dashboardUrl } from "@/lib/route";
 
 export default function Login() {
   const router: AppRouterInstance = useRouter();
@@ -29,7 +30,7 @@ export default function Login() {
       if (response?.error) {
         setError("Invalid credentials.");
       } else {
-        router.push("/dashboard");
+        router.push(dashboardUrl);
       }
     } catch (error) {
       console.error("Error during login:", error);
